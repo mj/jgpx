@@ -28,6 +28,7 @@ package net.divbyzero.gpx.parser;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -54,23 +55,34 @@ import org.jdom.input.SAXBuilder;
  * @see <a href="http://jdom.org/">JDOM</a>
  */
 public class JDOM implements Parser {
-	private Document doc;
 	private Namespace ns;
+	private SAXBuilder parser = new SAXBuilder();
 	
-	@SuppressWarnings("unchecked")
-	public GPX parse(String inputFile) throws ParsingException {
-		GPX gpx = new GPX();
-		
-		SAXBuilder parser = new SAXBuilder();
-		
+	public GPX parse(File file) throws ParsingException {		
 		try {
-			doc = parser.build(new File(inputFile));			
+			Document doc = parser.build(file);
+			return parse(doc);
 		} catch (IOException e) {
 			throw new ParsingException("Unable to open input", e);
 		} catch (JDOMException e) {
 			throw new ParsingException("Unable to parse input", e);
 		}
+	}
+	
+	public GPX parse(URL url) throws ParsingException {
+		try {
+			Document doc = parser.build(url);
+			return parse(doc);
+		} catch (IOException e) {
+			throw new ParsingException("Unable to open input", e);
+		} catch (JDOMException e) {
+			throw new ParsingException("Unable to parse input", e);
+		}		
+	}
 
+	@SuppressWarnings("unchecked")
+	private GPX parse(Document doc) {
+		GPX gpx = new GPX();
 		Element rootNode = doc.getRootElement();
 		ns = rootNode.getNamespace();
 		
