@@ -26,6 +26,9 @@
  */
 package net.divbyzero.gpx.parser;
 
+import java.io.File;
+import java.net.URL;
+
 import net.divbyzero.gpx.GPX;
 
 /**
@@ -39,9 +42,18 @@ public interface Parser {
 	/**
 	 * Parses a GPX file and returns the resulting GPX track collection
 	 * 
-	 * @param inputFile file name of the file to be parsed
+	 * @param file the file to be parsed
 	 * @return the resulting track collection
-	 * @throws Exception
+	 * @throws ParsingException
 	 */
-	public abstract GPX parse(String inputFile) throws ParsingException;
+	public abstract GPX parse(File file) throws ParsingException;
+
+	/**
+	 * Parses a GPX URL and returns the resulting GPX track collection
+	 * 
+	 * @param url the URL to be parsed
+	 * @return the resulting track collection
+	 * @throws ParsingException
+	 */
+	public abstract GPX parse(URL url) throws ParsingException;
 }

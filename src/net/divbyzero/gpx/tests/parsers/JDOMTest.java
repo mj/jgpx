@@ -26,22 +26,50 @@
  */
 package net.divbyzero.gpx.tests.parsers;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
+
 import net.divbyzero.gpx.GPX;
-import net.divbyzero.gpx.parser.Parser;
 import net.divbyzero.gpx.parser.JDOM;
+import net.divbyzero.gpx.parser.Parser;
+import net.divbyzero.gpx.parser.ParsingException;
 
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertNotNull;
 
 public class JDOMTest {
 
 	@Test
 	public void testTrackParsing() throws Exception {
 		Parser parser = new JDOM();
-		GPX gpx = parser.parse("data/track.gpx");
+		GPX gpx = parser.parse(new File("data/track.gpx"));
 		
+		assertEquals(1, gpx.getTracks().size());
+		
+		assertTrue(gpx.getTracks().get(0).cumulativeAscent() > 0);
+		assertTrue(gpx.getTracks().get(0).cumulativeDescent() > 0);
+		assertTrue(gpx.getTracks().get(0).length() > 0);
+		
+		assertNotNull(gpx.getTracks().get(0).startingTime());
+		assertNotNull(gpx.getTracks().get(0).endTime());
+	}
+	
+	@Test
+	public void testTrackingParsingFromURL() throws ParsingException {
+		URL url = null;
+		Parser parser = new JDOM();
+		try {
+			url = new File("data/track.gpx").toURL();
+		} catch (MalformedURLException e) {
+			fail();
+		}
+		
+		GPX gpx = parser.parse(url);
 		assertEquals(1, gpx.getTracks().size());
 		
 		assertTrue(gpx.getTracks().get(0).cumulativeAscent() > 0);
