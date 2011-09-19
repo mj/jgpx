@@ -36,13 +36,13 @@ public class CoordinateTest {
 	@Test
 	public void testInitialLatitudeIsNull() {
 		Coordinate c = new Coordinate();
-		assertEquals(0.0, c.getLatitude());
+		assertEquals(0.0, c.getLatitude(), 0.0);
 	}
 	
 	@Test
 	public void testInitialLongitudeIsNull() {
 		Coordinate c = new Coordinate();
-		assertEquals(0.0, c.getLongitude());
+		assertEquals(0.0, c.getLongitude(), 0.0);
 	}
 	
 	@Test
@@ -50,9 +50,9 @@ public class CoordinateTest {
 		Coordinate c = new Coordinate();
 		
 		c.setLatitude(50.776667);
-		assertEquals(50.776667, c.getLatitude());
+		assertEquals(50.776667, c.getLatitude(), 0.0);
 		c.setLatitude(50.942222);
-		assertEquals(50.942222, c.getLatitude());
+		assertEquals(50.942222, c.getLatitude(), 0.0);
 	}
 
 	@Test
@@ -60,9 +60,9 @@ public class CoordinateTest {
 		Coordinate c = new Coordinate();
 		
 		c.setLongitude(6.083611);
-		assertEquals(6.08361, c.getLongitude());
+		assertEquals(6.083611, c.getLongitude(), 0.0);
 		c.setLongitude(6.957778);
-		assertEquals(6.957778, c.getLongitude());
+		assertEquals(6.957778, c.getLongitude(), 0.0);
 	}
 
 }

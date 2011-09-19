@@ -62,7 +62,7 @@ public class TrackTest {
 	@Test
 	public void testInitialLengthIsZero() {
 		Track track = new Track();		
-		assertEquals(0, track.length());
+		assertEquals(0, track.length(), 0.0);
 	}
 	
 	@Test
@@ -79,23 +79,23 @@ public class TrackTest {
 		Track track = new Track();
 		track.addSegment(s1);
 		
-		assertEquals(s1.length(), track.length());
-		assertEquals(100, track.length());
+		assertEquals(s1.length(), track.length(), 0.0);
+		assertEquals(100, track.length(), 0.0);
 		
 		track.addSegment(s2);
-		assertEquals(s1.length() + s2.length(), track.length());
+		assertEquals(s1.length() + s2.length(), track.length(), 0.0);
 	}
 	
 	@Test
 	public void testInitialCumulativeAscentIsZero() {
 		Track track = new Track();
-		assertEquals(0, track.cumulativeAscent());
+		assertEquals(0, track.cumulativeAscent(), 0.0);
 	}
 
 	@Test
 	public void testInitialCumulativeDescentIsZero() {
 		Track track = new Track();
-		assertEquals(0, track.cumulativeDescent());
+		assertEquals(0, track.cumulativeDescent(), 0.0);
 	}
 
 	@Test
@@ -112,11 +112,11 @@ public class TrackTest {
 		Track track = new Track();
 		track.addSegment(s1);
 		
-		assertEquals(s1.cumulativeAscent(), track.cumulativeAscent());
-		assertEquals(200, track.cumulativeAscent());
+		assertEquals(s1.cumulativeAscent(), track.cumulativeAscent(), 0.0);
+		assertEquals(200, track.cumulativeAscent(), 0.0);
 		
 		track.addSegment(s2);
-		assertEquals(s1.cumulativeAscent() + s2.cumulativeAscent(), track.cumulativeAscent());
+		assertEquals(s1.cumulativeAscent() + s2.cumulativeAscent(), track.cumulativeAscent(), 0.0);
 		
 	}
 
@@ -134,11 +134,11 @@ public class TrackTest {
 		Track track = new Track();
 		track.addSegment(s1);
 		
-		assertEquals(s1.cumulativeDescent(), track.cumulativeDescent());
-		assertEquals(300, track.cumulativeDescent());
+		assertEquals(s1.cumulativeDescent(), track.cumulativeDescent(), 0.0);
+		assertEquals(300, track.cumulativeDescent(), 0.0);
 		
 		track.addSegment(s2);
-		assertEquals(s1.cumulativeDescent() + s2.cumulativeDescent(), track.cumulativeDescent());
+		assertEquals(s1.cumulativeDescent() + s2.cumulativeDescent(), track.cumulativeDescent(), 0.0);
 		
 	}
 

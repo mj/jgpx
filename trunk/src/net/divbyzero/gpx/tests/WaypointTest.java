@@ -88,26 +88,26 @@ public class WaypointTest {
 	@Test
 	public void testElevationIsInitiallyEmpty() {
 		Waypoint w = new Waypoint();
-		assertEquals(0.0, w.getElevation());
+		assertEquals(0.0, w.getElevation(), 0.0);
 	}
 	
 	@Test
 	public void testElevationCanBeSet() {
 		Waypoint w = new Waypoint();
 		w.setElevation(200);
-		assertEquals(200, w.getElevation());
+		assertEquals(200, w.getElevation(), 0.0);
 	}
 
 	@Test
 	public void testDistanceToSelfIsZero() {
 		Waypoint w = new Waypoint();
-		assertEquals(0, w.calculateDistanceTo(w));
+		assertEquals(0, w.calculateDistanceTo(w), 0.0);
 		
 		Coordinate c = new Coordinate();
 		c.setLatitude(1.0);
 		c.setLongitude(2.0);
 		w.setCoordinate(c);
-		assertEquals(0, w.calculateDistanceTo(w));
+		assertEquals(0, w.calculateDistanceTo(w), 0.0);
 	}
 	
 	@Test
