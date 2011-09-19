@@ -69,14 +69,14 @@ public class TrackSegmentTest {
 	public void testCumulativeAscentIsInitiallyZero()
 	{
 		TrackSegment segment = new TrackSegment();
-		assertEquals(0, segment.cumulativeAscent());
+		assertEquals(0, segment.cumulativeAscent(), 0.0);
 	}
 
 	@Test
 	public void testCumulativeDescentIsInitiallyZero()
 	{
 		TrackSegment segment = new TrackSegment();
-		assertEquals(0, segment.cumulativeDescent());
+		assertEquals(0, segment.cumulativeDescent(), 0.0);
 	}
 	
 	@Test
@@ -84,7 +84,7 @@ public class TrackSegmentTest {
 	{		
 		TrackSegment segment = new TrackSegment();
 		segment.addWaypoint(new Waypoint());
-		assertEquals(0, segment.cumulativeAscent());
+		assertEquals(0, segment.cumulativeAscent(), 0.0);
 	}
 
 	@Test
@@ -92,7 +92,7 @@ public class TrackSegmentTest {
 	{		
 		TrackSegment segment = new TrackSegment();
 		segment.addWaypoint(new Waypoint());
-		assertEquals(0, segment.cumulativeDescent());
+		assertEquals(0, segment.cumulativeDescent(), 0.0);
 	}
 	
 	@Test
@@ -110,9 +110,9 @@ public class TrackSegmentTest {
 		segment.addWaypoint(w2);
 		segment.addWaypoint(w1);
 		
-		assertEquals(50, segment.cumulativeAscent());
-		assertEquals(50, segment.cumulativeDescent());
-		assertEquals(segment.cumulativeAscent(), segment.cumulativeDescent());
+		assertEquals(50, segment.cumulativeAscent(), 0.0);
+		assertEquals(50, segment.cumulativeDescent(), 0.0);
+		assertEquals(segment.cumulativeAscent(), segment.cumulativeDescent(), 0.0);
 	}
 	
 	@Test
@@ -137,8 +137,8 @@ public class TrackSegmentTest {
 		segment.addWaypoint(w3);
 		segment.addWaypoint(w4);
 		
-		assertEquals(50, segment.cumulativeAscent());
-		assertEquals(70, segment.cumulativeDescent());
+		assertEquals(50, segment.cumulativeAscent(), 0.0);
+		assertEquals(70, segment.cumulativeDescent(), 0.0);
 	}
 
 	@Test
@@ -163,17 +163,17 @@ public class TrackSegmentTest {
 		segment.addWaypoint(w3);
 		segment.addWaypoint(w4);
 		
-		assertEquals(0, segment.cumulativeAscent());
-		assertEquals(0, segment.cumulativeDescent());
+		assertEquals(0, segment.cumulativeAscent(), 0.0);
+		assertEquals(0, segment.cumulativeDescent(), 0.0);
 	}
 	
 	@Test
 	public void testLengthIsInitiallyZero() {
 		TrackSegment segment = new TrackSegment();
-		assertEquals(0, segment.length());
+		assertEquals(0, segment.length(), 0.0);
 		
 		segment.addWaypoint(new Waypoint());
-		assertEquals(0, segment.length());
+		assertEquals(0, segment.length(), 0.0);
 	}
 	
 	@Test
