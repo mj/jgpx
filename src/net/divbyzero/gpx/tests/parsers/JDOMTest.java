@@ -64,7 +64,7 @@ public class JDOMTest {
 		URL url = null;
 		Parser parser = new JDOM();
 		try {
-			url = new File("data/track.gpx").toURL();
+			url = new File("data/track.gpx").toURI().toURL();
 		} catch (MalformedURLException e) {
 			fail();
 		}
