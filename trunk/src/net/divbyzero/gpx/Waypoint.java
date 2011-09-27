@@ -141,7 +141,7 @@ public class Waypoint {
 	public double calculateDistanceTo(Waypoint otherPoint) {
 		// According to http://en.wikipedia.org/wiki/Earth_radius#Mean_radii
 		// earth has an equatorial radius of 6,378.137 kilometers. 
-		int R = 6378137;
+		final int R = 6378137;
 
 		if (otherPoint.getCoordinate() == null || getCoordinate() == null) {
 			return 0.0;
