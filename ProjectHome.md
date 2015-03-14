@@ -1,0 +1,1 @@
+jpgx is a library that makes it possible to parse GPX (GPS Exchange Format) files and access their data from within the Java programming language.
